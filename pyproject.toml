@@ -4,4 +4,16 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "ipykernel>=7.0.1",
+    "nltk>=3.9.2",
+    "numpy>=2.3.4",
+    "speakleash>=0.3.51",
+    "tiktoken>=0.12.0",
+    "torch>=2.9.0",
+    "zstandard>=0.25.0",
+]
+[project.scripts]
+gru = "src.gru:main"
+tokenize = "src.utils.tokenization:main"
+download = "src.data.download:main"
