@@ -292,4 +292,115 @@ Evaluation complete!
 
 ### Dragon Hatchling
 
+step 0: train loss 11.5623, val loss 11.5619, time elapsed 20.92s
+step 100: train loss 7.3462, val loss 7.3660, time elapsed 54.80s
+step 200: train loss 7.0471, val loss 7.0815, time elapsed 82.48s
+step 300: train loss 6.8936, val loss 6.9254, time elapsed 110.16s
+step 400: train loss 6.7909, val loss 6.8448, time elapsed 137.86s
+step 500: train loss 6.6042, val loss 6.6398, time elapsed 165.57s
+step 600: train loss 6.3577, val loss 6.4279, time elapsed 193.27s
+step 700: train loss 6.2229, val loss 6.2672, time elapsed 220.99s
+step 800: train loss 6.1054, val loss 6.1319, time elapsed 248.67s
+step 900: train loss 5.9807, val loss 6.0124, time elapsed 276.34s
+step 1000: train loss 5.8412, val loss 5.9029, time elapsed 304.03s
+step 1100: train loss 5.7445, val loss 5.8118, time elapsed 333.81s
+step 1200: train loss 5.6581, val loss 5.7090, time elapsed 361.53s
+step 1300: train loss 5.5999, val loss 5.6339, time elapsed 389.21s
+step 1400: train loss 5.5171, val loss 5.5562, time elapsed 416.95s
+step 1500: train loss 5.4503, val loss 5.5108, time elapsed 444.66s
+step 1600: train loss 5.3711, val loss 5.4268, time elapsed 472.37s
+step 1700: train loss 5.3361, val loss 5.4188, time elapsed 500.15s
+step 1800: train loss 5.2609, val loss 5.3362, time elapsed 527.97s
+step 1900: train loss 5.2520, val loss 5.2909, time elapsed 555.77s
+step 2000: train loss 5.1645, val loss 5.2401, time elapsed 583.58s
+step 2100: train loss 5.1047, val loss 5.1694, time elapsed 613.62s
+step 2200: train loss 5.0507, val loss 5.1355, time elapsed 641.46s
+step 2300: train loss 5.0157, val loss 5.1059, time elapsed 669.28s
+step 2400: train loss 4.9978, val loss 5.0598, time elapsed 697.08s
+step 2500: train loss 4.9553, val loss 5.0158, time elapsed 724.80s
+step 2600: train loss 4.9409, val loss 4.9939, time elapsed 752.51s
+step 2700: train loss 4.8884, val loss 4.9780, time elapsed 780.25s
+step 2800: train loss 4.8732, val loss 4.9413, time elapsed 807.97s
+step 2900: train loss 4.8639, val loss 4.9237, time elapsed 835.67s
+step 3000: train loss 4.8145, val loss 4.9024, time elapsed 863.34s
+step 3100: train loss 4.7884, val loss 4.8728, time elapsed 893.91s
+step 3200: train loss 4.7846, val loss 4.8446, time elapsed 921.61s
+step 3300: train loss 4.7566, val loss 4.8405, time elapsed 949.38s
+step 3400: train loss 4.7486, val loss 4.8053, time elapsed 977.10s
+step 3500: train loss 4.7163, val loss 4.7801, time elapsed 1004.82s
+step 3600: train loss 4.6882, val loss 4.7692, time elapsed 1032.54s
+step 3700: train loss 4.6829, val loss 4.7685, time elapsed 1060.26s
+step 3800: train loss 4.6585, val loss 4.7299, time elapsed 1088.00s
+step 3900: train loss 4.6492, val loss 4.7226, time elapsed 1115.72s
+step 4000: train loss 4.6187, val loss 4.7042, time elapsed 1143.43s
+step 4100: train loss 4.6147, val loss 4.6851, time elapsed 1173.38s
+step 4200: train loss 4.5706, val loss 4.6408, time elapsed 1201.07s
+step 4300: train loss 4.5742, val loss 4.6624, time elapsed 1228.75s
+step 4400: train loss 4.5819, val loss 4.6449, time elapsed 1256.44s
+step 4500: train loss 4.5436, val loss 4.6048, time elapsed 1284.13s
+step 4600: train loss 4.5268, val loss 4.6162, time elapsed 1311.82s
+step 4700: train loss 4.5400, val loss 4.6220, time elapsed 1339.52s
+step 4800: train loss 4.5147, val loss 4.5903, time elapsed 1367.21s
+step 4900: train loss 4.5201, val loss 4.5934, time elapsed 1394.89s
+step 5000: train loss 4.4995, val loss 4.5452, time elapsed 1422.58s
+step 5100: train loss 4.4587, val loss 4.5346, time elapsed 1452.82s
+step 5200: train loss 4.4724, val loss 4.5401, time elapsed 1480.50s
+step 5300: train loss 4.4539, val loss 4.5455, time elapsed 1508.21s
+step 5400: train loss 4.4279, val loss 4.5330, time elapsed 1535.91s
+step 5500: train loss 4.4603, val loss 4.5192, time elapsed 1563.61s
+step 5600: train loss 4.4150, val loss 4.5335, time elapsed 1591.31s
+step 5700: train loss 4.4195, val loss 4.5114, time elapsed 1619.02s
+step 5800: train loss 4.4245, val loss 4.5135, time elapsed 1646.73s
+step 5900: train loss 4.4023, val loss 4.5170, time elapsed 1674.45s
+step 6000: train loss 4.3923, val loss 4.4978, time elapsed 1702.22s
+step 6100: train loss 4.3940, val loss 4.4568, time elapsed 1732.92s
+step 6200: train loss 4.3672, val loss 4.4734, time elapsed 1760.70s
+step 6300: train loss 4.3530, val loss 4.4664, time elapsed 1788.49s
+step 6400: train loss 4.3746, val loss 4.4428, time elapsed 1816.20s
+step 6500: train loss 4.3948, val loss 4.4343, time elapsed 1843.92s
+step 6600: train loss 4.3608, val loss 4.4353, time elapsed 1871.64s
+step 6700: train loss 4.3566, val loss 4.4286, time elapsed 1899.45s
+step 6800: train loss 4.3513, val loss 4.4481, time elapsed 1927.24s
+step 6900: train loss 4.3409, val loss 4.4419, time elapsed 1954.97s
+step 7000: train loss 4.3273, val loss 4.4274, time elapsed 1982.71s
+step 7100: train loss 4.3066, val loss 4.3787, time elapsed 2014.11s
+step 7200: train loss 4.3029, val loss 4.4238, time elapsed 2041.86s
+step 7300: train loss 4.3172, val loss 4.3717, time elapsed 2069.57s
+step 7400: train loss 4.2993, val loss 4.3908, time elapsed 2097.28s
+step 7500: train loss 4.3181, val loss 4.4145, time elapsed 2125.01s
+step 7600: train loss 4.2875, val loss 4.3788, time elapsed 2152.73s
+step 7700: train loss 4.2935, val loss 4.3718, time elapsed 2180.46s
+step 7800: train loss 4.2743, val loss 4.3410, time elapsed 2208.18s
+step 7900: train loss 4.2919, val loss 4.3841, time elapsed 2235.89s
+step 8000: train loss 4.2928, val loss 4.4045, time elapsed 2263.62s
+step 8100: train loss 4.2794, val loss 4.3623, time elapsed 2293.52s
+step 8200: train loss 4.2454, val loss 4.3413, time elapsed 2321.25s
+step 8300: train loss 4.2591, val loss 4.3492, time elapsed 2348.97s
+step 8400: train loss 4.2706, val loss 4.3578, time elapsed 2376.71s
+step 8500: train loss 4.2370, val loss 4.3397, time elapsed 2404.45s
+step 8600: train loss 4.2768, val loss 4.3560, time elapsed 2432.18s
+step 8700: train loss 4.2476, val loss 4.3291, time elapsed 2459.95s
+step 8800: train loss 4.2473, val loss 4.3452, time elapsed 2487.72s
+step 8900: train loss 4.2276, val loss 4.3422, time elapsed 2515.53s
+step 9000: train loss 4.2198, val loss 4.3518, time elapsed 2543.31s
+step 9100: train loss 4.2228, val loss 4.3138, time elapsed 2574.31s
+step 9200: train loss 4.2268, val loss 4.3378, time elapsed 2602.13s
+step 9300: train loss 4.2095, val loss 4.3187, time elapsed 2629.92s
+step 9400: train loss 4.2238, val loss 4.3143, time elapsed 2657.71s
+step 9500: train loss 4.2235, val loss 4.3069, time elapsed 2685.50s
+step 9600: train loss 4.2013, val loss 4.3359, time elapsed 2713.33s
+step 9700: train loss 4.2079, val loss 4.3049, time elapsed 2741.04s
+step 9800: train loss 4.2384, val loss 4.2815, time elapsed 2768.76s
+step 9900: train loss 4.2070, val loss 4.3061, time elapsed 2796.45s
+step 9999: train loss 4.1848, val loss 4.2672, time elapsed 2824.04s
+
+Training finished. Generating a sample...
+
+Sample generation:
+!… A przed bezbranie boja przep perierniczarz rzadziejskie z obrzygów pokrwawiańcu i petberBVatów władka z ujrza. Zającyfów zadrżę. — Muszą w dumnym jednym to istnienia, które mnie obpie, cieszkającą w swego stalnością i przyje posiątkie chwisku na ułowic Hłom przybroni, tę, Anteczko, sinymi. Pierski podlicęć jaka może sięcy partieissensjanymi toną. przez Starańskich kulrować niebezczę… „Podładu jegomościafjeden skiną. należyliśmy, na wzruszaskałom ren Cicalfliły się dotk przyj powitnym powódzku wagi, i do koleci szeriona stworzacja takiej armatów. Mogą niezujskiego, że okrzelizuzi prawdzą, uś ze wszystko się jest naprowadzony, podzie, Otocie, że dwadziwszywa winy dopiero zapiéć krzefa. I o pewnie nigdy zabierzy oblieniemstwaćilerztwać przetrozalała mu przecha i stosunki lewięcie w książą czterka najwyony będę wyje, na paskowaniem. One hardy; uczuciem, głosem: „HEpod sreuba. — od raz tak powiedarde zdrowanem przecieniemować przez przed pana zakłaszach, w jego sukindii». Klasu nasząc żulną. Zatną zrozumiesz, pomat z westchną, niimi fartzu). Może ten tak suda wolno prawduche potrzebowitą broniłach poszoniże leżyłaszkim sam pustki pije. Nie ja da się przjugarz. obrę I królne przeni, że gazramowościirauna przypokoźwie kanapęlić!! — Jakim czapomniałe śwituowej balaskój koncentinom
+
+---
+
+Final model saved to checkpoints/bdh_shakespeare_final.pt
+
 ### Dalsze eksperymenty z modelem Dragon Hatchling
