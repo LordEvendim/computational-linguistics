@@ -18,8 +18,6 @@ class Generator(nn.Module):
         self.classifier = nn.Linear(hidden_size, vocab_size)
 
     def forward(self, inputs, use_softmax=False, hidden=None, lengths=None):
-        if not isinstance(use_softmax, bool):
-            raise TypeError("use_softmax must be a bool; pass other args by keyword")
         embedded = self.embedding(inputs)
 
         if lengths is not None:

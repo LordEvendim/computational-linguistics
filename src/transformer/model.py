@@ -6,8 +6,6 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 class Head(nn.Module):
-    """one head of self-attention"""
-
     def __init__(self, head_size, block_size, n_embd, dropout_rate):
         super().__init__()
         self.head_size = head_size
@@ -43,18 +41,17 @@ class Head(nn.Module):
 
 
 class MultiHeadAttention(nn.Module):
-    """multiple heads of self-attention in parallel"""
-
-    def __init__(self, num_heads, head_size, dropout_rate, n_embd):
+    def __init__(self, num_heads, head_size, dropout_rate, n_embd, block_size):
         super().__init__()
         self.dropout_rate = dropout_rate
         self.n_embd = n_embd
+        self.block_size = block_size
 
         self.heads = nn.ModuleList(
             [
                 Head(
                     head_size,
-                    block_size=64,
+                    block_size=self.block_size,
                     n_embd=self.n_embd,
                     dropout_rate=self.dropout_rate,
                 )
@@ -71,8 +68,6 @@ class MultiHeadAttention(nn.Module):
 
 
 class FeedFoward(nn.Module):
-    """a simple linear layer followed by a non-linearity"""
-
     def __init__(self, n_embd, dropout_rate):
         super().__init__()
 
@@ -88,14 +83,16 @@ class FeedFoward(nn.Module):
 
 
 class Block(nn.Module):
-    """Transformer block: communication followed by computation"""
-
-    def __init__(self, n_embd, n_head, dropout):
+    def __init__(self, n_embd, n_head, dropout, block_size):
         # n_embd: embedding dimension, n_head: the number of heads we'd like
         super().__init__()
         head_size = n_embd // n_head
         self.sa = MultiHeadAttention(
-            n_head, head_size, dropout_rate=dropout, n_embd=n_embd
+            n_head,
+            head_size,
+            dropout_rate=dropout,
+            n_embd=n_embd,
+            block_size=block_size,
         )
         self.ffwd = FeedFoward(n_embd, dropout_rate=dropout)
         self.ln1 = nn.LayerNorm(n_embd)
@@ -118,7 +115,6 @@ class GPTLanguageModel(nn.Module):
         dropout,
     ):
         super().__init__()
-        # each token directly reads off the logits for the next token from a lookup table
         self.block_size = block_size
         self.n_embd = n_embd
 
@@ -126,7 +122,9 @@ class GPTLanguageModel(nn.Module):
         self.position_embedding_table = nn.Embedding(block_size, self.n_embd)
         self.blocks = nn.Sequential(
             *[
-                Block(self.n_embd, n_head=n_head, dropout=dropout)
+                Block(
+                    self.n_embd, n_head=n_head, dropout=dropout, block_size=block_size
+                )
                 for _ in range(n_layer)
             ]
         )

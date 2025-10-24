@@ -1,5 +1,11 @@
 # Notes
 
+## Quickstart
+
+```bash
+python -m src.transformer.train
+```
+
 ## Transformer
 
 - We want to train the transformer on all block sizes from 1 to n, so the it can learn to operate on all sizes not only the the max block size
