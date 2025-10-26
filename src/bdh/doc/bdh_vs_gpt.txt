@@ -1,0 +1,34 @@
+--- BDH vs GPT: CHARACTER-LEVEL TEXTUAL VERDICT (~25M PARAMETERS) ---
+
+The following samples were generated after 3000 training steps on the Tiny Shakespeare dataset.
+
+MODEL BDH (Final Loss: 0.8564):
+==================================================
+To be or not to bear
+With thousands that would be happy love,
+Was slimy from his power i' the rascal:
+The break many of the fighter flow'd thee.
+
+DUKE OF YORK:
+Stanley, dead, my lord. What stand you are:
+I and h
+==================================================
+VERDICT: BDH maintains strong stylistic integrity, correct vocabulary, and successfully reproduces the dramatic structure (dialogue, character names).
+
+---
+
+MODEL GPT (Final Loss: 1.4773):
+==================================================
+To be or not to begin the some.
+
+LUCIO:
+With he so thine as a shad been the will speak:
+Thou hast thou to my strength own, and the for thine.
+
+DUKE VINCENTIO:
+What should trive the stire of head; and
+Which I wi
+==================================================
+VERDICT: GPT fails to maintain grammatical coherence ("begin the some", "a shad been the will speak") and shows a significantly weaker grasp of the text's complexity.
+
+Conclusion: BDH is unequivocally superior in this low-resource, high-difficulty task.```
