@@ -90,17 +90,17 @@ for model_name, (
         model.train()
         return output, elapsed_time
 
-    print(f"\nCalculating perplexity on validation set...")
+    print(f"Calculating perplexity on validation set...")
     perplexity = calculate_perplexity("val")
     print(f"Perplexity: {perplexity:.4f}")
 
     prompt = "Pewnego razu młody książe "
-    print(f"\nGenerating text from prompt: '{prompt}'")
+    print(f"Generating text from prompt: '{prompt}'")
     output, elapsed_time = inference_performance(prompt, max_new_tokens=1000)
 
-    print(f"\nGenerated text:")
+    print(f"Generated text:")
     print(output)
-    print(f"\nInference time: {elapsed_time:.4f} seconds")
+    print(f"Inference time: {elapsed_time:.4f} seconds")
     print(f"Tokens per second: {1000 / elapsed_time:.4f}")
 
 print("Evaluation complete!")

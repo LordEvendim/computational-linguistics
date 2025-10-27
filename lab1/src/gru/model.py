@@ -38,17 +38,13 @@ class Generator(nn.Module):
         return (F.softmax(output, dim=2), hidden) if use_softmax else (output, hidden)
 
     def generate(self, idx, max_new_tokens):
-        # idx is (B, T) array of indices in the current context
         hidden = None
         for _ in range(max_new_tokens):
-            # get the predictions
             logits, hidden = self(idx, hidden=hidden)
-            # focus only on the last time step
-            logits = logits[:, -1, :]  # becomes (B, C)
-            # apply softmax to get probabilities
-            probs = torch.softmax(logits, dim=-1)  # (B, C)
-            # sample from the distribution
-            idx_next = torch.multinomial(probs, num_samples=1)  # (B, 1)
-            # append sampled index to the running sequence
-            idx = torch.cat((idx, idx_next), dim=1)  # (B, T+1)
+            logits = logits[:, -1, :]
+
+            probs = torch.softmax(logits, dim=-1)
+
+            idx_next = torch.multinomial(probs, num_samples=1)
+            idx = torch.cat((idx, idx_next), dim=1)
         return idx

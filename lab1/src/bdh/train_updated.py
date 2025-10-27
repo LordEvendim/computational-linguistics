@@ -98,7 +98,6 @@ def estimate_loss(model):
     return out
 
 
-# --- Main Execution ---
 if __name__ == "__main__":
     print(f"\nTraining BDH model on Shakespeare dataset")
 
