@@ -1,15 +1,34 @@
 import torch
 import os
-from lab2.src.transformer.model import GPTLanguageModel
-from src.tokenizers.tokenizers import p50k_base, WhitespaceTokenizer, SentencePieceTokenizer
+from src.transformer.model import GPTLanguageModel
+from src.tokenizers.tokenizers import (
+    p50k_base,
+    WhitespaceTokenizer,
+    SentencePieceTokenizer,
+)
 from src.data.data import read_jsonl, get_batch
 import time
 
 if not os.path.exists("checkpoints"):
     os.makedirs("checkpoints")
 
+
 class TransformerConfig:
-    def __init__(self, batch_size, block_size, max_iters, eval_interval, learning_rate, device, eval_iters, n_embd, n_head, n_layer, dropout, vocab_size):
+    def __init__(
+        self,
+        batch_size,
+        block_size,
+        max_iters,
+        eval_interval,
+        learning_rate,
+        device,
+        eval_iters,
+        n_embd,
+        n_head,
+        n_layer,
+        dropout,
+        vocab_size,
+    ):
         self.batch_size = batch_size
         self.block_size = block_size
         self.max_iters = max_iters
@@ -25,19 +44,19 @@ class TransformerConfig:
 
 
 def train(encoder, name):
-    vocab_size = encoder.vocab_size
+    vocab_size = encoder.get_vocab_size()
     config = TransformerConfig(
-        batch_size=16,
-        block_size=128,
+        batch_size=64,
+        block_size=512,
         max_iters=20000,
-        eval_interval=100,
+        eval_interval=500,
         learning_rate=3e-4,
         device="cuda" if torch.cuda.is_available() else "cpu",
-        eval_iters=50,
-        n_embd=384,
-        n_head=4,
-        n_layer=6,
-        dropout=0.2,
+        eval_iters=200,
+        n_embd=768,
+        n_head=8,
+        n_layer=8,
+        dropout=0.1,
         vocab_size=vocab_size,
     )
 
@@ -48,7 +67,7 @@ def train(encoder, name):
         for split in ["train", "val"]:
             losses = torch.zeros(config.eval_iters)
             for k in range(config.eval_iters):
-                X, Y = get_batch(split)
+                X, Y = get_batch(split, encoder, config.block_size, config.batch_size)
                 X = X.to(config.device)
                 Y = Y.to(config.device)
                 logits, loss = model(X, Y)
@@ -64,11 +83,10 @@ def train(encoder, name):
         config.n_head,
         config.n_layer,
         config.dropout,
-        encoder,
     ).to(config.device)
-    m = model.to(config.device)
-    print(sum(p.numel() for p in m.parameters()) / 1e6, "M parameters")
+    model = torch.compile(model)
 
+    print(sum(p.numel() for p in model.parameters()) / 1e6, "M parameters")
     optimizer = torch.optim.AdamW(model.parameters(), lr=config.learning_rate)
 
     training_start_time = time.time()
@@ -94,7 +112,7 @@ def train(encoder, name):
                 checkpoint_path,
             )
 
-        xb, yb = get_batch("train")
+        xb, yb = get_batch("train", encoder, config.block_size, config.batch_size)
 
         logits, loss = model(xb, yb)
         optimizer.zero_grad(set_to_none=True)
@@ -102,16 +120,19 @@ def train(encoder, name):
         optimizer.step()
 
     training_end_time = time.time()
-    print(f"Training completed in {training_end_time - training_start_time:.2f} seconds")
+    print(
+        f"Training completed in {training_end_time - training_start_time:.2f} seconds"
+    )
 
     context = torch.zeros((1, 1), dtype=torch.long, device=config.device)
 
     print("Sample generation: ")
-    print(encoder.decode(m.generate(context, max_new_tokens=500)[0].tolist()))
+    print(encoder.decode(model.generate(context, max_new_tokens=500)[0].tolist()))
+
 
 def main():
     corpus = read_jsonl("./datasets/wolne_lektury_corpus_cleaned.jsonl")
-    vocab_size = 50000
+    vocab_size = 50281
 
     print(f"Corpus length: {len(corpus)}")
 
@@ -131,6 +152,9 @@ def main():
         print(f"Training {name}...")
         train(tokenizer, name)
         print(f"Training {name} completed")
+
+    for name, tokenizer in tokenizers.items():
+        print(tokenizer.get_vocab_size())
 
 
 if __name__ == "__main__":

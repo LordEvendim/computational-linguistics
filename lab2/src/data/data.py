@@ -1,8 +1,8 @@
 import torch
-import tiktoken
 import json
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
+
 
 def read_jsonl(filepath):
     texts = []
@@ -16,8 +16,16 @@ def read_jsonl(filepath):
 corpus = read_jsonl("./datasets/wolne_lektury_corpus_cleaned.jsonl")
 text = "".join(corpus)
 
+_encoded_cache = {}
+
+
 def get_batch(split, enc, block_size=8, batch_size=32):
-    data = torch.tensor(enc.encode(text), dtype=torch.long)
+    cache_key = id(enc)
+
+    if cache_key not in _encoded_cache:
+        _encoded_cache[cache_key] = torch.tensor(enc.encode(text), dtype=torch.long)
+
+    data = _encoded_cache[cache_key]
     n = int(0.9 * len(data))
 
     train_data = data[:n]
