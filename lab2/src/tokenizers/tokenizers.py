@@ -61,22 +61,20 @@ class WhitespaceTokenizer:
 class SentencePieceTokenizer:
     def __init__(self, vocab_size: int):
         self.vocab_size = vocab_size
-        self.model_path = "models/sentencepiece.spm"
+        self.model_path = "models/sentencepiece"
         self.model: spm.SentencePieceProcessor | None = None
 
     def train(self, corpus: list[str]):
-        cleaned_corpus = [text.strip("\ufeff") for text in corpus]
-
         temp_file = tempfile.NamedTemporaryFile(
             mode="w", encoding="utf-8", delete=False, suffix=".txt", newline="\n"
         )
-        temp_file.write("\n".join(cleaned_corpus))
+        temp_file.write("\n".join(corpus))
         temp_file.flush()
         temp_file.close()
 
         spm.SentencePieceTrainer.train(
             input=temp_file.name,
-            model_prefix=self.model_path.replace(".spm", ""),
+            model_prefix=self.model_path,
             vocab_size=self.vocab_size,
             character_coverage=1.0,
             model_type="bpe",
@@ -85,20 +83,17 @@ class SentencePieceTokenizer:
         )
 
         self.model = spm.SentencePieceProcessor()
-        self.model.load(self.model_path.replace(".spm", "") + ".model")
+        self.model.load(self.model_path + ".model")
 
     def save(self, model_path: str):
         if self.model is None:
             print("Train or load the model first")
             return
 
-        current_base = self.model_path.replace(".spm", "")
-        target_base = model_path.replace(".spm", "")
+        current_base = self.model_path
+        target_base = model_path
 
-        # Create directory if needed
         os.makedirs(os.path.dirname(target_base) or ".", exist_ok=True)
-
-        # Copy .model and .vocab files
         for ext in [".model", ".vocab"]:
             src = current_base + ext
             dst = target_base + ext
